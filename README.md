@@ -42,3 +42,18 @@ puedes ejecutar un promp directamente en la consola del contendor:
 # Java
 
 Si dejas la url por defecto no hace falta definir ninguna variable en el `application.properties`
+
+## Un ejemplo de ejecucion:
+
+```
+Formula tu pregunta: Genera un texto con 3 frase para probar el streaming de ChatClient de springboot
+ 1. "Hola, bienvenido al ChatBot de SpringBoot! Puede comenzar a chatar conmigo de inmediato."
+
+2. "Por favor, escriba su mensaje y estaré encantado de responderle lo antes posible."
+
+3. "Gracias por utilizar el ChatBot de SpringBoot. Si tiene alguna pregunta o sugerencia, no dudo en decírsela."
+
+--- Generación Completada ---
+```
+ 
+La respuesta del Llm sería poco a poco sin tener que esperar a que la genere completa
