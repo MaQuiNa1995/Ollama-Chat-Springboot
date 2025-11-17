@@ -1,15 +1,15 @@
-# Simple chat ia
+# Ollama-Chat-Springboot
 
 ## Docker
 Este proyecto muestra la configuracion y ejecución de un java interactuando con un contenedor docker de ollama con un modelo de lenguaje embebido
 
 En este caso usamos mistral:latest
 
-Para hacer funcionar en local este proyecto necesitas docker y ejecutar el docker compose que está en la raiz del proyecto
+Para hacer funcionar en local este proyecto necesitas docker y ejecutar el docker compose que est� en la raiz del proyecto
 
 `docker-compose up` desde la consola
 
-Cuando esté corriendo en docker puedes acceder a la consola del contendor y ejecutar:
+Cuando est� corriendo en docker puedes acceder a la consola del contendor y ejecutar:
 
 `ollama pull nombreModelo`
 
@@ -33,32 +33,12 @@ Aqui tienes algunos ejemplos de modelos:
  - llama3.1:8b    
  - llama3.2:3b
 
-El lenguaje mas liviano que encontré es mistral:latest
+El lenguaje mas liviano que encontr� es mistral:latest
 
 puedes ejecutar un promp directamente en la consola del contendor:
 
 `ollama run nombreModelo "prompt"`
 
-## Java
-El codigo está con javadoc explicado pero lo mas importante para enganchar java y el contenedor son:
+# Java
 
-### Dependencias:
-```
-<dependency>
-	<groupId>org.springframework.ai</groupId>
-	<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-	<version>${spring-ai.version}</version>
-</dependency>
-```
-
-### application.properties
-```
-# URL base de tu instancia local de Ollama (el puerto por defecto)
-spring.ai.ollama.base-url=http://localhost:11434 
-
-# Modelo que usarás. Debe ser un modelo que ya hayas descargado en Ollama.
-spring.ai.ollama.chat.options.model=mistral:latest
-```
-
-
-
+Si dejas la url por defecto no hace falta definir ninguna variable en el `application.properties`
