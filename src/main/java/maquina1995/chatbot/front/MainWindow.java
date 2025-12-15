@@ -58,19 +58,26 @@ public class MainWindow extends VerticalLayout {
 		 */
 		promptUsuarioText.addKeyDownListener(Key.ENTER, event -> {
 			String promptUsuario = promptUsuarioText.getValue();
+			// Limpiamos el textArea
 			conversacionChatTextArea.clear();
+			// Si el textField no esta vacio
 			if (StringUtils.isNotEmpty(promptUsuario)) {
 				UI ui = UI.getCurrent();
 				chatClient.prompt(promptUsuario)
+					// aqui le decimos al chatClient que use las herramientas que hemos creado en ToolConfiguration
 					.tools(toolConfiguration)
 					.stream()
 					.content()
+					// usamos el subscribe para que cuando se vaya creando letra a letra la respuesta por parte del chatbot
 					.subscribe(nuevoMensaje -> {
+						// Se vaya pasando al textArea 
 						ui.access(() -> {
+							// Aqui cogemos lo que había antes y añadimos la nueva info
 							String contenidoActual = conversacionChatTextArea.getValue();
 							conversacionChatTextArea.setValue(contenidoActual + nuevoMensaje);
 						});
 					},
+					// En el caso de que se produzca un error metemos un mensaje
 					error -> ui.access(() -> conversacionChatTextArea.setValue("Error en el stream: " + error.getMessage())));
 			}
 		});
