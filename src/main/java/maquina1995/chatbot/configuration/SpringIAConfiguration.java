@@ -7,8 +7,13 @@ import org.springframework.context.annotation.Bean;
 
 import maquina1995.chatbot.tool.ToolConfiguration;
 
+/**
+ * Clase usada para la configuracion de SpringIA 
+ * 
+ */
 @SpringBootConfiguration
-public class BeanConfiguration {
+public class SpringIAConfiguration {
+	
 	/**
      * Crea un bean de ChatClient inyectando el ChatModel que ya fue creado
      * automaticamente por el spring-ai-ollama-spring-boot-starter.

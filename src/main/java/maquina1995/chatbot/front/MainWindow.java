@@ -16,12 +16,21 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 
 import maquina1995.chatbot.tool.ToolConfiguration;
 
+/**
+ * Clase que crea la ventana principal de chat en la ruta htttp:localhost:8080/chat y hace que por cada cliente se cree una instancia de esta clase es decir ya no es singleton sino prototype
+ * 
+ */
 @SpringComponent
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Route("/chat")
 public class MainWindow extends VerticalLayout {
-	
 
+	/**
+	 * Constructor de la ventana con parametros inyectados del contexto de spring
+	 * 
+	 * @param chatClient objeto usado para la interaccion con el contenedor docker de ollama (chatbot)
+	 * @param toolConfiguration objeto usado para usar el toolCalling con las utilidades explicadas en la clase {@link ToolConfiguration}
+	 */
 	public MainWindow(ChatClient chatClient, ToolConfiguration toolConfiguration) {
 
 		setSizeFull();
@@ -43,6 +52,10 @@ public class MainWindow extends VerticalLayout {
 		TextField promptUsuarioText = new TextField();
 		promptUsuarioText.getElement().getStyle().set("background-color", "grey");
 		promptUsuarioText.setWidthFull();
+		
+		/**
+		 * Evento que se activa cuando se presiona enter
+		 */
 		promptUsuarioText.addKeyDownListener(Key.ENTER, event -> {
 			String promptUsuario = promptUsuarioText.getValue();
 			conversacionChatTextArea.clear();
@@ -50,7 +63,6 @@ public class MainWindow extends VerticalLayout {
 				UI ui = UI.getCurrent();
 				chatClient.prompt(promptUsuario)
 					.tools(toolConfiguration)
-					
 					.stream()
 					.content()
 					.subscribe(nuevoMensaje -> {
@@ -58,7 +70,8 @@ public class MainWindow extends VerticalLayout {
 							String contenidoActual = conversacionChatTextArea.getValue();
 							conversacionChatTextArea.setValue(contenidoActual + nuevoMensaje);
 						});
-				}, error -> ui.access(() -> conversacionChatTextArea.setValue("Error en el stream: " + error.getMessage())));
+					},
+					error -> ui.access(() -> conversacionChatTextArea.setValue("Error en el stream: " + error.getMessage())));
 			}
 		});
 
