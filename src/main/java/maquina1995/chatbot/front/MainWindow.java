@@ -14,12 +14,15 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 
+import maquina1995.chatbot.tool.ToolConfiguration;
+
 @SpringComponent
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Route("/chat")
 public class MainWindow extends VerticalLayout {
+	
 
-	public MainWindow(ChatClient chatClient) {
+	public MainWindow(ChatClient chatClient, ToolConfiguration toolConfiguration) {
 
 		setSizeFull();
 		setSpacing(false);
@@ -46,6 +49,8 @@ public class MainWindow extends VerticalLayout {
 			if (StringUtils.isNotEmpty(promptUsuario)) {
 				UI ui = UI.getCurrent();
 				chatClient.prompt(promptUsuario)
+					.tools(toolConfiguration)
+					
 					.stream()
 					.content()
 					.subscribe(nuevoMensaje -> {

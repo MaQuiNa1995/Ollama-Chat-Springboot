@@ -5,6 +5,8 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 
+import maquina1995.chatbot.tool.ToolConfiguration;
+
 @SpringBootConfiguration
 public class BeanConfiguration {
 	/**
@@ -14,11 +16,8 @@ public class BeanConfiguration {
      * @return Una instancia del ChatClient.
      */
     @Bean
-    public ChatClient customChatClient(ChatModel chatModel) {
+    public ChatClient customChatClient(ChatModel chatModel, ToolConfiguration toolConfiguration) {
         return ChatClient.builder(chatModel)
-                // Opcional: Aqui puedes configurar opciones por defecto
-                // .defaultSystem("Eres un asistente de programaci�n experto en Java.")
-                // .defaultToolNames("myToolFunction")
                 .build();
     }
 }
