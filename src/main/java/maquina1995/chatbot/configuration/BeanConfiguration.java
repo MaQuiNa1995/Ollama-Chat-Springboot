@@ -1,4 +1,4 @@
-package maquina1995.ollama.chat.springboot.configuration;
+package maquina1995.chatbot.configuration;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
@@ -9,15 +9,15 @@ import org.springframework.context.annotation.Bean;
 public class BeanConfiguration {
 	/**
      * Crea un bean de ChatClient inyectando el ChatModel que ya fue creado
-     * automáticamente por el spring-ai-ollama-spring-boot-starter.
-     * @param chatModel El modelo de chat (OllamaChatModel) inyectado automáticamente.
+     * automaticamente por el spring-ai-ollama-spring-boot-starter.
+     * @param chatModel El modelo de chat (OllamaChatModel) inyectado automaticamente.
      * @return Una instancia del ChatClient.
      */
     @Bean
     public ChatClient customChatClient(ChatModel chatModel) {
         return ChatClient.builder(chatModel)
-                // Opcional: Aquí puedes configurar opciones por defecto
-                // .defaultSystem("Eres un asistente de programación experto en Java.")
+                // Opcional: Aqui puedes configurar opciones por defecto
+                // .defaultSystem("Eres un asistente de programaciï¿½n experto en Java.")
                 // .defaultToolNames("myToolFunction")
                 .build();
     }
