@@ -63,3 +63,7 @@ Formula tu pregunta: Genera un texto con 3 frase para probar el streaming de Cha
 ```
  
 La respuesta del Llm sería poco a poco sin tener que esperar a que la genere completa
+
+# Tool Calling
+
+Tienes ejemplos de tool calling en: ToolConfiguration 
