@@ -1,7 +1,7 @@
 # Ollama-Chat-Springboot
 
 ## Docker
-Este proyecto muestra la configuracion y ejecuciÃ³n de un java interactuando con un contenedor docker de ollama con un modelo de lenguaje embebido
+Este proyecto muestra la configuracion y ejecucion de un java interactuando con un contenedor docker de ollama con un modelo de lenguaje embebido
 
 En este caso usamos mistral:latest
 
